@@ -48,9 +48,9 @@ _Bool *itoboolarr_f(int rule_nr) {
     memset(result, 0, sizeof(_Bool) * kBIT_WIDTH);
     
     for (int i = kBIT_WIDTH - 1; i >= 0; --i) {
-        int x = rule_nr / pow(2, i);
+        int x = rule_nr / powf(2.00f, (float)i);
         
-        rule_nr -= x * pow(2, i);
+        rule_nr -= x * powf(2.00f, (float)i);
         
         result[i] = (_Bool)x;
     }
@@ -107,7 +107,7 @@ bailout:
     
     _Bool *rule_buf = itoboolarr_f(30);
     
-    generate_r(bin_buffer, bool_qty, rule_buf);
+//    generate_r(bin_buffer, bool_qty, rule_buf);
     
     return 0;
 }
