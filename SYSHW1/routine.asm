@@ -1,7 +1,7 @@
     segment     .data
-    global      _generate_r
+    global      generate_r
 
-_generate_r:
+generate_r:
 
       push  ebp
       mov   ebp,esp
