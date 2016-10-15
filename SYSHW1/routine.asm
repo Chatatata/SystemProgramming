@@ -7,7 +7,7 @@ generate_r:
       mov   ebp,esp           ; Load stack pointer to base pointer
 
       mov   ecx,[ebp+8]       ; Load first argument to 32-bit AP register
-      mov   edx,[ebp+12]      ; Load second argument to 32-bit AP register
+      mov   edx,[ebp+16]      ; Load second argument to 32-bit AP register
       xor   eax,eax           ; Clear EAX
 
       mov   eax,edx
