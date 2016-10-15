@@ -114,7 +114,7 @@ bailout:
 
     _Bool *rule_buf = itoboolarr_f(30);
 
-    printf("%x\n", bin_len);
+    printf("%x\n", bool_qty);
     printf("%x\n", generate_r(bin_buffer, bool_qty, rule_buf));
     printf("Mul: %d\n", pown_m_f(rule_nr, num_generations));
 
