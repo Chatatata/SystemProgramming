@@ -16,7 +16,7 @@
 #define kBIT_WIDTH 8
 #define kFILE_NAME "input1d.txt"
 
-void generate_r(const _Bool *bin_buf, long bin_len, const _Bool *rule_buf);
+void *generate_r(const _Bool *bin_buf, long bin_len, const _Bool *rule_buf);
 
 int fetch_rule_nr_f() {
     char *rule_nr_buffer = (char *)malloc(sizeof(char) * 7);
@@ -114,7 +114,7 @@ bailout:
 
     _Bool *rule_buf = itoboolarr_f(30);
 
-    generate_r(bin_buffer, bool_qty, rule_buf);
+    printf("%x\n", generate_r(bin_buffer, bool_qty, rule_buf));
     printf("Mul: %d\n", pown_m_f(rule_nr, num_generations));
 
     return 0;

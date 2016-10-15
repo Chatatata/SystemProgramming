@@ -3,8 +3,13 @@
 
 generate_r:
 
-      push  ebp
-      mov   ebp,esp
+      push  ebp               ; Save the old base pointer value
+      mov   ebp,esp           ; Load stack pointer to base pointer
 
-      pop   ebp
-      ret
+      mov   ecx,[ebp+8]       ; Load first argument to 32-bit AP register
+      xor   eax,eax           ; Clear EAX
+
+      mov   eax,ecx
+
+      pop   ebp               ; Restore base pointer
+      ret                     ; Bailout, jump to return address
