@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5A78EB141DB0F50400ECEABB /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 5A78EB131DB0F50400ECEABB /* main.c */; };
+		5A78EB1B1DB1079C00ECEABB /* routine.asm in Sources */ = {isa = PBXBuildFile; fileRef = 5A78EB1A1DB1079C00ECEABB /* routine.asm */; };
+		5A78EB1D1DB1137800ECEABB /* hello.asm in Sources */ = {isa = PBXBuildFile; fileRef = 5A78EB1C1DB1137800ECEABB /* hello.asm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		5A78EB101DB0F50400ECEABB /* SYSHW1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SYSHW1; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A78EB131DB0F50400ECEABB /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		5A78EB1A1DB1079C00ECEABB /* routine.asm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm.asm; path = routine.asm; sourceTree = "<group>"; };
+		5A78EB1C1DB1137800ECEABB /* hello.asm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm.asm; path = hello.asm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 			isa = PBXGroup;
 			children = (
 				5A78EB131DB0F50400ECEABB /* main.c */,
+				5A78EB1C1DB1137800ECEABB /* hello.asm */,
+				5A78EB1A1DB1079C00ECEABB /* routine.asm */,
 			);
 			path = SYSHW1;
 			sourceTree = "<group>";
@@ -120,6 +126,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A78EB1B1DB1079C00ECEABB /* routine.asm in Sources */,
+				5A78EB1D1DB1137800ECEABB /* hello.asm in Sources */,
 				5A78EB141DB0F50400ECEABB /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,7 +226,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = DHCR3H4M55;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = (
+					"-Weverything",
+					"-Wall",
+				);
 			};
 			name = Debug;
 		};
@@ -226,7 +240,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = DHCR3H4M55;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = (
+					"-Weverything",
+					"-Wall",
+				);
 			};
 			name = Release;
 		};
