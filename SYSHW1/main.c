@@ -118,7 +118,7 @@ bailout:
 
     itoboolarr_f(rule_buffer, rule_nr);
 
-    printf("Rule buffer: ");
+    printf("Rule buffer           : ");
 
     for (size_t i = 0; i < 8; i++) {
         printf("%x", rule_buffer[i]);
@@ -126,7 +126,7 @@ bailout:
 
     printf("\n");
 
-    printf("Binary buffer : ");
+    printf("Binary buffer         : ");
 
     for (size_t i = 0; i < bool_qty; i++) {
         printf("%x", bin_buffer[i]);
@@ -134,7 +134,7 @@ bailout:
 
     printf("\n");
 
-    printf("Binary buffer addr: %x\nBool_qty addr: %x\nRule buffer addr: %x\nDraw buffer addr: %x\n", &bin_buffer, &bool_qty, &rule_buffer, &draw_buffer);
+    printf("Binary buffer address : 0x%x\nBinary buffer length  : %d\nRule buffer address   : 0x%x\nDraw buffer address   : 0x%x\n", &bin_buffer, bool_qty, &rule_buffer, &draw_buffer);
 
     printf("\n");
 
@@ -144,7 +144,7 @@ bailout:
         printf("%x", draw_buffer[i]);
     }
 
-    printf("\n");
+    printf("\n\n");
 
     for (size_t i = 0; i < num_generations; i++) {
         generate_r(bin_buffer, bool_qty, rule_buffer, draw_buffer);
