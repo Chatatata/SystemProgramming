@@ -9,14 +9,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 #include <errno.h>
 #include <unistd.h>
 
 #define kBIT_WIDTH 8
 #define kFILE_NAME "input1d.txt"
 
-void generate_r(const _Bool *bin_buf, long bin_len, const _Bool *rule_buf, const _Bool *draw_buf);
+void generate_r(int *bin_buf, int bin_len, int *rule_buf, int *draw_buf);
 
 int fetch_rule_nr_f() {
     char *rule_nr_buffer = (char *)malloc(sizeof(char) * 7);
@@ -50,13 +49,13 @@ int pown_m_f(const int base, const int power) {
     }
 }
 
-void itoboolarr_f(_Bool *rule_buf, int rule_nr) {
+void itoboolarr_f(int *rule_buf, int rule_nr) {
     for (int i = kBIT_WIDTH - 1; i >= 0; --i) {
         int x = rule_nr / pown_m_f(2, i);
 
         rule_nr -= x * pown_m_f(2, i);
 
-        rule_buf[i] = (_Bool)x;
+        rule_buf[i] = (int)x;
     }
 }
 
@@ -72,9 +71,9 @@ int main(int argc, const char * argv[]) {
 
     printf("Reading binary buffer from file...");
 
-    _Bool bin_buffer[BUFSIZ];
-    _Bool draw_buffer[BUFSIZ];
-    _Bool rule_buffer[8];
+    int bin_buffer[BUFSIZ];
+    int draw_buffer[BUFSIZ];
+    int rule_buffer[8];
     int bool_qty = 0;
 
     while (!feof(f_ptr)) {
@@ -92,10 +91,10 @@ int main(int argc, const char * argv[]) {
             case ' ':
                 continue;
 	        case '0':
-                bin_buffer[bool_qty++] = (_Bool)0;
+                bin_buffer[bool_qty++] = (int)0;
                 break;
             case '1':
-                bin_buffer[bool_qty++] = (_Bool)1;
+                bin_buffer[bool_qty++] = (int)1;
                 break;
             default:
                 perror("unexpected input sequence");
@@ -139,7 +138,7 @@ bailout:
 
     printf("\n");
 
-    printf("Draw buffer   : ");
+    printf("Initial draw buffer   : ");
 
     for (size_t i = 0; i < bool_qty; i++) {
         printf("%x", draw_buffer[i]);
@@ -147,16 +146,21 @@ bailout:
 
     printf("\n");
 
-    printf("Buffer address: %d", bin_buffer[15]);
+    for (size_t i = 0; i < num_generations; i++) {
+        generate_r(bin_buffer, bool_qty, rule_buffer, draw_buffer);
 
-    printf("\n");
+        printf("Processed draw buffer : ");
 
-    //printf("Subroutine: %d\n", generate_r(bin_buffer, bool_qty, rule_buf, draw_buffer));
-    generate_r(bin_buffer, bool_qty, rule_buffer, draw_buffer);
-    printf("\n");
-    for (size_t i = 0; i < bool_qty; i++) {
-        printf("%x", draw_buffer[i]);
+        for (size_t i = 0; i < bool_qty; i++) {
+            printf("%x", draw_buffer[i]);
+        }
+
+        memcpy(bin_buffer, draw_buffer, BUFSIZ);
+
+        printf("\n");
     }
+
+    printf("\n");
 
     return 0;
 }
