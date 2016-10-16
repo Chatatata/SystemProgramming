@@ -58,10 +58,10 @@ check_if_last:
         pop   ecx               ; Fetch the iterator, n
         mov   edx, [ebp+12]     ; Fetch the length of the binary array
         dec   edx               ; Decrement it to point the last
-        push  ecx               ; Push the iterator to the stack
-        push  eax               ; Push the total impact to the stack
         cmp   ecx, edx          ; Check if it's equal to length - 1
         je    compare_rule_arr  ; Branch to the upper element
+        push  ecx               ; Push the iterator to the stack
+        push  eax               ; Push the total impact to the stack
 
 add_after_element:
         mov   eax, [ebx+8]      ; Fetch the n+1th element of the binary arr

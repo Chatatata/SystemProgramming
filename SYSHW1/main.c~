@@ -154,9 +154,9 @@ bailout:
     //printf("Subroutine: %d\n", generate_r(bin_buffer, bool_qty, rule_buf, draw_buffer));
     generate_r(bin_buffer, bool_qty, rule_buffer, draw_buffer);
     printf("\n");
-    for (size_t i = 0; i < bool_qty; i++) {
-        printf("%x", draw_buffer[i]);
-    }
+    //for (size_t i = 0; i < bool_qty; i++) {
+    //    printf("%x", draw_buffer[i]);
+    //}
 
     return 0;
 }
