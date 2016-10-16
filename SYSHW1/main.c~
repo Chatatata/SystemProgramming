@@ -155,7 +155,7 @@ bailout:
             printf("%x", draw_buffer[i]);
         }
 
-        memcpy(bin_buffer, draw_buffer, bool_qty);
+        memcpy(bin_buffer, draw_buffer, BUFSIZ);
 
         printf("\n");
     }

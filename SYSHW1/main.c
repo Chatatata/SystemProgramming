@@ -107,12 +107,12 @@ bailout:
     fclose(f_ptr);
 
     //  Fetch the rule number from stdin
-    printf("\nPlease enter the rule number: ");
+    printf("\nPlease enter the rule number in base 10: ");
     rule_nr = fetch_rule_nr_f();
     printf("\n");
 
     //  Fetch the number of generations from stdin
-    printf("Please enter the number of generations: ");
+    printf("Please enter the number of generations in base 10: ");
     num_generations = fetch_num_generations_f();
     printf("\n");
 
